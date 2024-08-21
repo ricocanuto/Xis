@@ -11,7 +11,8 @@ html {
     scroll-snap-type: y mandatory;
 }
 
-video, .img-tesla {
+video,
+.img-tesla {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -83,10 +84,60 @@ button {
 .formulario {
     position: fixed;
     top: 40px;
-    width: 600px;
-    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 100vh;
     z-index: 3;
-    left: -50%;
+    left: -100%;
     transition: 1.5s;
+    overflow: auto;
 }
 
+/* Media Queries */
+@media (max-width: 1200px) {
+    h1 {
+        font-size: 5vw;
+    }
+
+    .formulario {
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 50px;
+    }
+
+    h1 {
+        font-size: 6vw;
+    }
+
+    button {
+        padding: 0.5em 1.5em;
+    }
+
+    .formulario {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 80px;
+    }
+
+    h1 {
+        font-size: 7vw;
+    }
+
+    button {
+        padding: 0.5em 1em;
+    }
+
+    .formulario {
+        top: 30px;
+        left: -100%;
+    }
+}
