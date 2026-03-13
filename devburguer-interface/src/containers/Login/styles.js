@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import BackgroundLogin from '../../assets/background-login.svg';
+import BackgroundLogin from '../../assets/bgLogin.png';
 import Background from '../../assets/background.svg';
+
 
 export const Container = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const LeftContainer = styled.div`
-  background: url('${BackgroundLogin}');
+  background: url(${BackgroundLogin});
   background-size: cover;
   background-position: center;
 
@@ -20,51 +21,74 @@ export const LeftContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-    
-img{
+
+  img {
     width: 80%;
-}
+  }
 `;
 
-
 export const RightContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-    height: 100%;
-    width: 100%;
-    max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-    background: url('${Background}');
-    background-color: #1e1e1e;
+  height: 100%;
+  width: 100%;
+  max-width: 50%;
+
+  background: url(${Background});
+  background-color: #1e1e1e;
+  color: #fff;
+
+  p {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+
+    a {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const Title = styled.h2`
-    font-family: "Road Rage", sans-serif;
-    font-size: 40px;
-    color: #fff;
+  font-family: 'Road Rage', sans-serif;
+  font-size: 40px;
+  color: #fff;
 
-    span{
-      color: #9758A6;
-    }
+  span {
+    color: #9758a6;
+    font-family: 'Road Rage', sans-serif;
+  }
 `;
 
 export const Form = styled.form`
-    display: flex;
-    flex-direction: column; 
-    gap: 20px;
-    padding: 20%;
-    width: 100%;
-    max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
 `;
 
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
 
-export const InputContainer = styled.div``;
+  input {
+    width: 100%;
+    border: none;
+    height: 52px;
+    border-radius: 5px;
+    padding-left: 10px;
+  }
 
-export const Label = styled.label``;
-
-export const Link = styled.a``;
-
-export const Button = styled.button``;
+  label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+`;
