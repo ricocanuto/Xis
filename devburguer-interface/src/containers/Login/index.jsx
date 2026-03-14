@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 import { Link } from "react-router-dom";
+import { api } from '../../services/api.js';
 
 import {
   Container,
@@ -40,8 +41,11 @@ export default function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const response = await api.post('./session', {
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (
