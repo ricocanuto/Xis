@@ -1,21 +1,17 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDom from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { BrowserRouter } from 'react-router-dom';
 
-import "react-toastify/dist/ReactToastify.css";
-
-import Login from './containers/login/index.jsx';
+import { router } from './routes';
 import GlobalStyles from './styles/globalStyles';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Login />
-      <ToastContainer autoClode={3000} />
-      <GlobalStyles />
-    </BrowserRouter>
-  </StrictMode>,
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <RouteProvider router={router} />
+    <GlobalStyles />
+    <ToastContainer autoClose={2080} theme="colored" />
+  </React.StrictMode>,
 );
 
  

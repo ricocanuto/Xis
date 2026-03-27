@@ -31,7 +31,7 @@ export default function Login() {
         .string()
         .min(6, 'A senha deve conter no mínimo 6 caracteres')
         .required('Senha é obrigatória'),
-    })
+    });
     
 
   const {
@@ -44,7 +44,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     const response = await toast.promise(
-      api.post('./session', {
+      api.post('/sessions', {
       email: data.email,
       password: data.password,
     }), {
@@ -76,7 +76,7 @@ export default function Login() {
             <input 
             type="email" 
             {...register('email')} />
-            {errors.email && <span>{errors.email.message}</span>}
+            <span>{errors?.email?.message}</span>
           </InputContainer>
         
           <InputContainer>
@@ -84,17 +84,17 @@ export default function Login() {
             <input 
             type="password" 
             {...register('password')} />
-           {errors.password && <span>{errors.password.message}</span>}
+           {errors?.password && <span>{errors.password.message}</span>}
           </InputContainer>
 
-          <Link to="/forgot-password">Esqueci minha senha</Link>
+          <Link style = {{ color: '#fff' }} to="/forgot-password">Esqueci minha senha</Link>
 
           <Button type="submit">Entrar</Button>
 
         </Form>
 
         <p>
-          Não tem uma conta?<a>Cadastre-se</a>
+          Não tem uma conta?<Link style={{ color: '#cf3057', textDecoration: 'underline', marginLeft: '5px' }} to="/cadastro">Cadastre-se</Link>
         </p>
 
       </RightContainer>
