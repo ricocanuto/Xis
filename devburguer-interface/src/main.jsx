@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDom from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
@@ -8,7 +8,7 @@ import GlobalStyles from './styles/globalStyles';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouteProvider router={router} />
+    <RouterProvider router={router} />
     <GlobalStyles />
     <ToastContainer autoClose={2080} theme="colored" />
   </React.StrictMode>,

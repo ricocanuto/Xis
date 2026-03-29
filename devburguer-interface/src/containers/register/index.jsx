@@ -19,9 +19,10 @@ import Logo from '../../assets/logo.png';
 
 import { Button } from '../../components/Button/index.jsx';
 
-export default function Login() {
+export default function Register() {
   const schema = yup
     .object({
+      name: yup.string().required('O nome é obrigatório'),
       email: yup
         .string()
         .email('Email inválido')
@@ -31,7 +32,12 @@ export default function Login() {
         .string()
         .min(6, 'A senha deve conter no mínimo 6 caracteres')
         .required('Senha é obrigatória'),
-    });
+      confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], 'As senhas devem ser iguais')
+      .required('Confirme sua senha'),
+    })
+    .required();
     
 
   const {
@@ -44,15 +50,20 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     const response = await toast.promise(
-      api.post('/sessions', {
+      api.post('/users', {
+      name: data.name,
       email: data.email,
       password: data.password,
-    }), {
+    }), 
+    {
       pending: 'Verificando suas credenciais...',
-      success: 'Login bem-sucedido!',
-      error: 'Erro ao fazer login. Verifique suas credenciais.',
-    });
-  };
+      success: 'Cadastro efetuado com sucesso!',
+      error: 'Ops, algo deu errado. Tente novamente.',
+    }
+  );
+
+  console.log(response);
+};  
 
   return (
     <Container>
@@ -64,13 +75,19 @@ export default function Login() {
       <RightContainer>
       
         <Title>
-          Olá, seja bem-vindo ao <span>Dev Burguer!</span>
-          <br />
-          Acesse com seu <span>login e senha.</span>
+        Criar conta
         </Title>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
       
+          <InputContainer>
+            <label>Nome</label>
+            <input 
+            type="text" 
+            {...register('name')} />
+            <span>{errors?.name?.message}</span>
+          </InputContainer>
+
           <InputContainer>
             <label>Email</label>
             <input 
@@ -87,14 +104,22 @@ export default function Login() {
            {errors?.password && <span>{errors.password.message}</span>}
           </InputContainer>
 
+          <InputContainer>
+            <label>Confirmar senha</label>
+            <input 
+            type="password" 
+            {...register('confirmPassword')} />
+           {errors?.confirmPassword && <span>{errors.password.message}</span>}
+          </InputContainer>
+
           <Link style = {{ color: '#fff' }} to="/forgot-password">Esqueci minha senha</Link>
 
-          <Button type="submit">Entrar</Button>
+          <Button type="submit">Criar conta</Button>
 
         </Form>
 
         <p>
-          Não tem uma conta?<Link style={{ color: '#cf3057', textDecoration: 'underline', marginLeft: '5px' }} to="/cadastro">Cadastre-se</Link>
+        Já possui conta?<Link style={{ color: '#3744f5', textDecoration: 'underline', marginLeft: '5px' }} to="/cadastro">Clique aqui.</Link>
         </p>
 
       </RightContainer>
