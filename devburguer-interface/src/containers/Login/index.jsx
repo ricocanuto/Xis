@@ -1,15 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
-import { Link } from "react-router-dom";
 import { api } from '../../services/api.js';
 
 import {
   Container,
   Form,
   InputContainer,
+  Link,
   LeftContainer,
   RightContainer,
   Title,
@@ -20,6 +21,7 @@ import Logo from '../../assets/logo.png';
 import { Button } from '../../components/Button/index.jsx';
 
 export default function Login() {
+  const navigate = useNavigate()
   const schema = yup
     .object({
       email: yup
@@ -43,17 +45,36 @@ export default function Login() {
   });
 
   const onSubmit = async (data) => {
-    const response = await toast.promise(
-      api.post('/sessions', {
-      email: data.email,
-      password: data.password,
-    }), {
-      pending: 'Verificando suas credenciais...',
-      success: 'Login bem-sucedido!',
-      error: 'Erro ao fazer login. Verifique suas credenciais.',
-    });
-  };
+    try {
+      const { data: responseData } = await toast.promise(
+        api.post('/sessions', {
+          email: data.email,
+          password: data.password,
+        }),
+        {
+          pending: 'Verificando seus dados...',
+          success: {
+            render() {
+              setTimeout(() => {
+                navigate('/');
+              }, 2000);
+              return 'Seja bem vindo(a)!';
+            },
+          },
+          error: 'Email ou senha incorretos 🤯',
+        }
+      );
 
+      // Aqui você salvaria os dados se necessário
+      // Ex: localStorage.setItem('devburguer:userData', JSON.stringify(responseData));
+
+    } catch (error) {
+      console.error("Erro crítico no login:", error);
+      toast.error('Erro no sistema. Tente novamente mais tarde.');
+    }
+  }; 
+
+   
   return (
     <Container>
 
@@ -87,14 +108,16 @@ export default function Login() {
            {errors?.password && <span>{errors.password.message}</span>}
           </InputContainer>
 
-          <Link style = {{ color: '#fff' }} to="/forgot-password">Esqueci minha senha</Link>
+          {/* <Link style = {{ color: '#fff' }} to="/forgot-password">Esqueci minha senha</Link> */}
 
           <Button type="submit">Entrar</Button>
 
         </Form>
 
         <p>
-          Não tem uma conta?<Link style={{ color: '#cf3057', textDecoration: 'underline', marginLeft: '5px' }} to="/cadastro">Cadastre-se</Link>
+          Não tem uma conta? <Link 
+          style={{ color: '#cf3057', textDecoration: 'underline', marginLeft: '5px' }} 
+          to="/cadastro">Cadastre-se </Link>
         </p>
 
       </RightContainer>

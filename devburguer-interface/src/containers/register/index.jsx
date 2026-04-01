@@ -1,15 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
-import { Link } from "react-router-dom";
 import { api } from '../../services/api.js';
 
 import {
   Container,
   Form,
   InputContainer,
+  Link,
   LeftContainer,
   RightContainer,
   Title,
@@ -20,6 +21,7 @@ import Logo from '../../assets/logo.png';
 import { Button } from '../../components/Button/index.jsx';
 
 export default function Register() {
+  const navigate = useNavigate()
   const schema = yup
     .object({
       name: yup.string().required('O nome é obrigatório'),
@@ -49,21 +51,33 @@ export default function Register() {
   });
 
   const onSubmit = async (data) => {
-    const response = await toast.promise(
-      api.post('/users', {
+    try {
+    const { status } = await api.post(
+      '/users', 
+      {
       name: data.name,
       email: data.email,
       password: data.password,
-    }), 
+    }, 
     {
-      pending: 'Verificando suas credenciais...',
-      success: 'Cadastro efetuado com sucesso!',
-      error: 'Ops, algo deu errado. Tente novamente.',
-    }
+      validateStatus: () => true,
+    },
   );
-
-  console.log(response);
-};  
+  
+  if (status ===200 || status === 201 ) {
+    setTimeout(() => {
+      navigate('/login');
+    }, 2000);
+    toast.success('Conta criada com sucesso!');
+ } else if (status === 409) {  
+    toast.error('Email já cadastrado! Faça o login para continuar');
+} else {
+  throw new Error();
+}
+} catch (error) {
+  toast.error('Falha no sistema! Tente novamente');
+}
+};
 
   return (
     <Container>
@@ -109,17 +123,20 @@ export default function Register() {
             <input 
             type="password" 
             {...register('confirmPassword')} />
-           {errors?.confirmPassword && <span>{errors.password.message}</span>}
+           {errors?.confirmPassword && <span>{errors.confirmPassword.message}</span>}
           </InputContainer>
 
-          <Link style = {{ color: '#fff' }} to="/forgot-password">Esqueci minha senha</Link>
+          <Link style = {{ color: '#fff' }} to="/login">Esqueci minha senha</Link>
 
           <Button type="submit">Criar conta</Button>
 
         </Form>
 
         <p>
-        Já possui conta?<Link style={{ color: '#3744f5', textDecoration: 'underline', marginLeft: '5px' }} to="/cadastro">Clique aqui.</Link>
+        Já possui conta?<Link 
+        style={{ color: '#3744f5', textDecoration: 'underline', marginLeft: '5px' }} 
+        to="/login">Clique aqui.
+        </Link>
         </p>
 
       </RightContainer>
