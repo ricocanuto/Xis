@@ -8,6 +8,7 @@ export const Banner = styled.div`
   background-size: cover;
   background-position: center;
   height: 480px;
+  position: relative;
 
   h1 {
     font-family: 'Road Rage', sans-serif;
@@ -19,13 +20,16 @@ export const Banner = styled.div`
   }
 `;
 
-export const Container = styled.section`
-  background:
-    linear-gradient(
-        rgba(255, 255, 255, 0.5), 
-        rgba(255, 255, 255, 0.5)),
+export const ContainerHome = styled.section`
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
     url('${Background}');
-  height: 500px;
+  background-size: cover;
+  min-height: 100vh;
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
