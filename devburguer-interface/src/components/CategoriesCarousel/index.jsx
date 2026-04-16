@@ -4,11 +4,8 @@ import CarouselModule from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import { api } from '../../services/api';
-import { Button, Container, ContainerItems, Title } from './styles.js';
+import { Container, ContainerItems, Title } from './styles';
 
-const Carousel = CarouselModule.default;
-
-console.log(Carousel);
 
 export function CategoriesCarousel() {
   const [categories, setCategories] = useState([]);
@@ -47,13 +44,11 @@ export function CategoriesCarousel() {
       itemClass="carousel-item"
     >
       {categories.map((category) => (
-        <Button key={category.id} to={`/cardapio?categoria=${category.id}`}>
-          <ContainerItems imageUrl={category.url}>
-            <p>{category.name}</p>
+          <ContainerItems key={category.id} $imageUrl={category.url}>
+            {category.name}
           </ContainerItems>
-        </Button>
       ))}
     </CarouselModule.default>
   </Container>
-); 
+);
 }

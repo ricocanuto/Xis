@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import { useCart } from "../../hooks/CartContext"; // CORREÇÃO 2: useCart vem dos hooks
-import { formatPrice } from "../../utils/formatPrice";
-import { CartButton } from "../CartButton"; // CORREÇÃO 1: Botão está na pasta components
+import { useCart } from "../../hooks/CartContext"; 
+import { CartButton } from "../CartButton"; 
 import { CardImage, Container } from "./styles";
 
 export function CardProduct({ product }) {
@@ -11,7 +10,7 @@ export function CardProduct({ product }) {
       <CardImage src={product.url} alt={product.name} />
       <div>
         <p>{product.name}</p>
-        <strong>{formatPrice(product.price)}</strong>
+        <strong>{product.currencyValue}</strong>
       </div>
       <CartButton onClick={() => putProductInCart(product)}></CartButton>
     </Container>

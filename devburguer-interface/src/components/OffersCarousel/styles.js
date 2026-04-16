@@ -17,12 +17,13 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #9758a6;
+  font-size: 32px;
+  font-weight: 800;
+  color: #61a120;
   padding-bottom: 12px;
   position: relative;
   text-align: center;
-  margin-bottom: 40px;
-  margin-top: 20px;
+  margin: 70px 0;
 
   &::after {
     content: '';
@@ -30,7 +31,7 @@ export const Title = styled.h2`
     bottom: 0;
     width: 56px;
     height: 4px;
-    background-color: #9758a6;
+    background-color: #61a120;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -39,8 +40,7 @@ export const Button = styled(Link)`
     padding: 20px 10px;
     width: 100%;
     height: 270px;
-
-  cursor: pointer;
+    cursor: pointer;
 
   &:hover {
     opacity: 0.8;
@@ -54,4 +54,27 @@ export const Button = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const ContainerItems = styled.div`
+  background-image: url(${(props) => props.$imageUrl});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  width: 90%;
+  height: 250px;
+
+  p {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
 `;

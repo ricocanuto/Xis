@@ -4,21 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
-import { api } from '../../services/api.js';
+import { api } from '../../services/api';
 
 import {
   Container,
   Form,
   InputContainer,
-  Link,
   LeftContainer,
+  Link,
   RightContainer,
   Title,
 } from './styles.js';
 
 import Logo from '../../assets/logo.png';
 
-import { Button } from '../../components/Button/index.jsx';
+import { Button } from '../../components/Button/index';
 
 export default function Login() {
   const navigate = useNavigate();

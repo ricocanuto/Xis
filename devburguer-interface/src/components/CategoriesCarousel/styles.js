@@ -1,16 +1,22 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
   padding-left: 30px;
   background-color: #efefef;
 
+  overflow-x: hidden;
+
+  .react-multi-carousel {
+    overflow: visible;
+  }
   .carousel-item {
     padding: 40px;
   }
 `;
 
 export const Title = styled.h2`
+  font-size: 32px;
+  font-weight: 800;
   color: #9758a6;
   padding-bottom: 12px;
   position: relative;
@@ -30,36 +36,38 @@ export const Title = styled.h2`
   }
 `;
 
-export const Button = styled (Link)`
-  padding: 20px 10px;
-  width: 100%;
-  height: 270px;
-  cursor: pointer;
+// export const Button = styled (Link)`
+//   padding: 20px 10px;
+//   width: 100%;
+//   height: 270px;
+//   cursor: pointer;
 
-  &:hover {
-    opacity: 0.8;
-  }
+//   &:hover {
+//     opacity: 0.8;
+//   }
 
-  &:active {
-    opacity: 0.6;
-  }
+//   &:active {
+//     opacity: 0.6;
+//   }
 
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+//   text-decoration: none;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
 export const ContainerItems = styled.div`
-  background: url(${(props) => props.imageUrl});
+  background-image: url(${(props) => props.$imageUrl});
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 20px 10px;
-  width: 90%;
-  height: 250px;
+  width: 100%;
+  height: 200px;
 
   p {
     color: #ffffff;

@@ -1,20 +1,27 @@
-import { useEffect, useState } from "react";
-import CarouselModule from "react-multi-carousel";
+import { useEffect, useState } from 'react';
+import CarouselModule from 'react-multi-carousel';
 
-import "react-multi-carousel/lib/styles.css";
+import 'react-multi-carousel/lib/styles.css';
 
-import { api } from "../../services/api";
-import { CardProduct } from "../CardProduct";
-import { Container, Title } from "./styles";
+import { formatPrice } from '../../utils/formatPrice';
+
+import { api } from '../../services/api';
+import { CardProduct } from '../CardProduct';
+import { Container, Title } from './styles';
 
 export function OffersCarousel() {
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
     async function loadProducts() {
-      const { data } = await api.get("/products");
+      const { data } = await api.get('/products');
 
-      const onlyOffers = data.filter((product) => product.offer);
+      const onlyOffers = data
+        .filter((product) => product.offer)
+        .map((product) => ({
+          currencyValue: formatPrice(product.price),
+          ...product,
+        }));
 
       setOffers(onlyOffers);
     }
@@ -42,7 +49,7 @@ export function OffersCarousel() {
 
   return (
     <Container>
-      <Title>Categorias</Title>
+      <Title>Ofertas do dia!</Title>
 
       <CarouselModule.default
         responsive={responsive}
@@ -52,7 +59,7 @@ export function OffersCarousel() {
       >
         {offers.map((product) => (
           <CardProduct key={product.id} product={product} />
-          ))}
+        ))}
       </CarouselModule.default>
     </Container>
   );
