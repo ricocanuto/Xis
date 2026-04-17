@@ -26,7 +26,7 @@ export function OffersCarousel() {
       setOffers(onlyOffers);
     }
     loadProducts();
-  });
+  }, []);
 
   const responsive = {
     superLargeDesktop: {
