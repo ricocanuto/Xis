@@ -5,41 +5,59 @@ export const Container = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 20px;
+gap: 50px;
 padding: 20px;
-border-radius: 8px;
+border-radius: 28px;
 background-color: #fff;
 cursor: grab;
 box-shadow: rgba(0, 0, 0,  0.35) opx 5px 15px;
 
-div {
+    div {
     width: 100%;
     height: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+    gap: 10px;
+    }
 
-p {
+    p {
     font-size: 18px;
     color: #ff8c05;
     line-height: 20px;
+    min-height: 68px;
     font-weight: 700;
-    margin-top: 40px;
-}
+    margin-top: 100px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 30px;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    }
 
-strong {
-    font-size: 22px;
-    color: #363636;
-    font-weight: 800;
-    line-height: 20px;
-}
+    strong {
+        margin-top: 30px;
+        font-size: 22px;
+        color: #363636;
+        font-weight: 800;
+        line-height: 10px;        
+    }
 `
-export const CardImage = styled.img`
-height: 100%;
-position: absolute;
-top: -50px;
 
+export const CardImage = styled.img`
+   height: 100px;
+   width: 140px;
+   position: absolute;    
+   top: -50px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   object-fit: cover;
+   object-position: center;
+   border-radius: 50%;
+   display: block;
 `
 
 export const StyledLink = styled(Link)`

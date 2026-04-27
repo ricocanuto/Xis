@@ -1,16 +1,24 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-left: 30px;
-  background-color: #efefef;
+  padding-left: 35px;
 
   overflow-x: hidden;
 
+  .react-multiple-carousel__arrow--left {
+    left: 5px;
+    top: 0;
+  }
+  .react-multiple-carousel__arrow--right {
+    right: 50px;
+    top: 0;
+  }
   .react-multi-carousel {
     overflow: visible;
   }
   .carousel-item {
-    padding: 40px;
+    padding-right: 40px;
   }
 `;
 
@@ -36,25 +44,32 @@ export const Title = styled.h2`
   }
 `;
 
-// export const Button = styled (Link)`
-//   padding: 20px 10px;
-//   width: 100%;
-//   height: 270px;
-//   cursor: pointer;
+export const Button = styled(Link)`
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-size: 22.5px;
+  font-weight: 500;
+  margin-top: 120px;
+  text-decoration: none;
+  width: 80%;
+  height: 50px;
+  cursor: pointer;
 
-//   &:hover {
-//     opacity: 0.8;
-//   }
+  &:hover {
+    opacity: 0.8;
+  }
 
-//   &:active {
-//     opacity: 0.6;
-//   }
+  &:active {
+    opacity: 0.6;
+  }
 
-//   text-decoration: none;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export const ContainerItems = styled.div`
   background-image: url(${(props) => props.$imageUrl});
@@ -68,6 +83,7 @@ export const ContainerItems = styled.div`
   padding: 20px 10px;
   width: 100%;
   height: 200px;
+  padding: 10px;
 
   p {
     color: #ffffff;

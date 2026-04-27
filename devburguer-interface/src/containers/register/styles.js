@@ -1,8 +1,7 @@
 import { Link as ReactLink } from 'react-router-dom';
 import styled from 'styled-components';
-import BackgroundLogin from '../../assets/bgLogin.png';
 import Background from '../../assets/background.svg';
-
+import BackgroundLogin from '../../assets/bgLogin.png';
 
 export const Container = styled.div`
   display: flex;
@@ -87,16 +86,9 @@ export const InputContainer = styled.div`
     font-weight: 600;
     color: #fff;
   }
-
-  p {
-    font-size: 14px;
-    line-height: 80%;
-    color: #cf3057;
-    font-weight: 600;
-  }
 `;
 
 export const Link = styled(ReactLink)`
-text-decoration: none;
-color: #fff;
+  text-decoration: none;
+  color: #fff;
 `;

@@ -104,7 +104,7 @@ export default function Login() {
           Não tem uma conta?{' '}
           <Link
             style={{
-              color: '#cf3057',
+              color: '#3744f5',
               textDecoration: 'underline',
               marginLeft: '5px',
             }}

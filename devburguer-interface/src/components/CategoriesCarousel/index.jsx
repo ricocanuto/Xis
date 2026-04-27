@@ -4,7 +4,7 @@ import CarouselModule from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import { api } from '../../services/api';
-import { Container, ContainerItems, Title } from './styles';
+import { Button, Container, ContainerItems, Title } from './styles';
 
 
 export function CategoriesCarousel() {
@@ -32,23 +32,26 @@ export function CategoriesCarousel() {
     mobile: { breakpoint: { max: 690, min: 0 }, items: 2 },
   };
 
- return (
-  <Container>
-    <Title>Categorias</Title>
+  return (
+    <Container>
+      <Title>Categorias</Title>
 
-    
-    <CarouselModule.default
-      responsive={responsive}
-      infinite={true}
-      partialVisible={false}
-      itemClass="carousel-item"
-    >
-      {categories.map((category) => (
+      <CarouselModule.default
+        responsive={responsive}
+        infinite={true}
+        partialVisible={false}
+        itemClass="carousel-item"
+      >
+        {categories.map((category) => (
           <ContainerItems key={category.id} $imageUrl={category.url}>
-            {category.name}
+            <Button to={`/cardapio?categoria=${category.id}`}>
+              {category.name}
+            </Button>
           </ContainerItems>
-      ))}
-    </CarouselModule.default>
-  </Container>
-);
+        ))}
+      </CarouselModule.default>
+    </Container>
+  );
 }
+ 
+   

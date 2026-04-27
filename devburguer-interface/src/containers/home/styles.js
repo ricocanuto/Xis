@@ -25,9 +25,10 @@ export const ContainerHome = styled.section`
     rgba(255, 255, 255, 0.5)
   ), 
     url('${Background}');
-  height: 500px;
+  width: 100%;
+  min-height: 100vh;
   background-size: cover;      
-  
+  background-position: center;
 `;
 
 export const Content = styled.div`

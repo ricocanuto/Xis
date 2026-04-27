@@ -73,7 +73,7 @@ export default function Register() {
       } else {
         throw new Error();
       }
-    } catch (error) {
+    } catch {
       toast.error('Falha no sistema! Tente novamente');
     }
   };
@@ -89,26 +89,30 @@ export default function Register() {
 
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputContainer>
-            <label>Nome</label>
-            <input type="text" {...register('name')} />
+            <label htmlFor="name">Nome</label>
+            <input id="name" type="text" {...register('name')} />
             <span>{errors?.name?.message}</span>
           </InputContainer>
 
           <InputContainer>
-            <label>Email</label>
-            <input type="email" {...register('email')} />
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" {...register('email')} />
             <span>{errors?.email?.message}</span>
           </InputContainer>
 
           <InputContainer>
-            <label>Senha</label>
-            <input type="password" {...register('password')} />
+            <label htmlFor="password">Senha</label>
+            <input id="password" type="password" {...register('password')} />
             {errors?.password && <span>{errors.password.message}</span>}
           </InputContainer>
 
           <InputContainer>
-            <label>Confirmar senha</label>
-            <input type="password" {...register('confirmPassword')} />
+            <label htmlFor="confirmPassword">Confirmar senha</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              {...register('confirmPassword')}
+            />
             {errors?.confirmPassword && (
               <span>{errors.confirmPassword.message}</span>
             )}
