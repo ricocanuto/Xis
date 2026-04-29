@@ -9,14 +9,13 @@ import { Button, Container, ContainerItems, Title } from './styles';
 
 export function CategoriesCarousel() {
   const [categories, setCategories] = useState([]);
-
-  
+ 
 
   useEffect(() => {
     async function loadCategories() {
       try {
         const { data } = await api.get('/categories');
-        console.log('Categories loaded:', data);
+        
         setCategories(data);
       } catch (error) {
         console.error('Erro na API:', error);

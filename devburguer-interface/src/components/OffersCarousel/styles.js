@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   .react-multiple-carousel__arrow {
     background: rgba(0, 0, 0, 0.5); 
-    min-width: 35px;
-    min-height: 35px;
+    min-width: 43px;
+    min-height: 43px;
     border-radius: 50%; 
     z-index: 10;
   }

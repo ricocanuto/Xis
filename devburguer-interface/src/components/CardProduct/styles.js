@@ -11,6 +11,7 @@ border-radius: 28px;
 background-color: #fff;
 cursor: grab;
 box-shadow: rgba(0, 0, 0,  0.35) opx 5px 15px;
+position: relative;
 
     div {
     width: 100%;
