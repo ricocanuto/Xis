@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 
+import Logo from '../../assets/logo.png';
+import { Button } from '../../components/Button/index';
+import { useUser } from '../../hooks/UserContext.jsx';
 import { api } from '../../services/api';
 
 import {
@@ -16,12 +19,10 @@ import {
   Title,
 } from './styles.js';
 
-import Logo from '../../assets/logo.png';
-
-import { Button } from '../../components/Button/index';
-
 export default function Login() {
   const navigate = useNavigate();
+  const { putUserData } = useUser();
+
   const schema = yup.object({
     email: yup.string().email('Email inválido').required('Email é obrigatório'),
 
@@ -41,8 +42,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      // Ajuste na desestruturação: pegamos o token de dentro do data retornado pela API
-      const response = await toast.promise(
+      const { data: userData } = await toast.promise(
         api.post('/sessions', {
           email: data.email,
           password: data.password,
@@ -60,12 +60,9 @@ export default function Login() {
           error: 'Email ou senha incorretos 🤯',
         },
       );
-      // O token vem de response.data.token
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-    } catch (error) {
-      console.error('Erro crítico no login:', error);
-      // toast.error('Erro no sistema. Tente novamente mais tarde.');
+      putUserData(userData);
+       } catch (error) {
+      console.error(error);
     }
   };
 

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { CardProduct } from '../../components/CardProduct';
 import { api } from '../../services/api.js';
 import { formatPrice } from '../../utils/formatPrice';
 
-import { CardProduct } from '../../components/CardProduct';
 
-import { useNavigate } from 'react-router-dom';
 import {
   Banner,
   CategoryButton,
@@ -13,37 +13,52 @@ import {
   ProductsContainer,
 } from './styles.js';
 
-export default function Menu() {
+export function Menu() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [filteredproducts, setFilteredProducts] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(0);
 
   const navigate = useNavigate();
 
+  const { search } = useLocation();
+
+  const queryParams = new URLSearchParams(search);
+
+  const [activeCategory, setActiveCategory] = useState(0);
+  const categoryId = +queryParams.get('category');
+
+  
   useEffect(() => {
-    async function loadCategories() {
+    setActiveCategory(categoryId);
+  }, [categoryId]);
+
+  useEffect(() => {
+  async function loadCategories() {
+    try {
       const { data } = await api.get('/categories');
-
       const newCategories = [{ id: 0, name: 'Todas' }, ...data];
-
       setCategories(newCategories);
+    } catch (error) {
+      console.error('Erro ao carregar categorias:', error);
     }
+  }
 
-    async function loadProducts() {
+  async function loadProducts() {
+    try {
       const { data } = await api.get('/products');
-
       const newProducts = data.map((product) => ({
         currencyValue: formatPrice(product.price),
         ...product,
       }));
-
       setProducts(newProducts);
+    } catch (error) {
+      console.error('Erro ao carregar produtos:', error);
     }
+  }
 
-    loadCategories();
-    loadProducts();
-  }, []);
+  loadCategories();
+  loadProducts();
+}, []);
 
   useEffect(() => {
     if (activeCategory === 0) {
@@ -91,10 +106,9 @@ export default function Menu() {
           </CategoryButton>
         ))}
       </CategoryMenu>
-
       <ProductsContainer>
         {filteredproducts.map((product) => (
-          <CardProduct product={product} key={product.id} />
+          <CardProduct key={product.id} product={product} />
         ))}
       </ProductsContainer>
     </Container>

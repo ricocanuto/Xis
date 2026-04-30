@@ -44,7 +44,7 @@ export const Title = styled.h2`
   }
 `;
 
-export const Button = styled(Link)`
+export const CategoryButton = styled(Link)`
   color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 30px;
@@ -85,13 +85,5 @@ export const ContainerItems = styled.div`
   height: 200px;
   padding: 10px;
 
-  p {
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 30px;
-    border-radius: 30px;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 50px;
-  }
 `;
+

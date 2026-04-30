@@ -3,6 +3,15 @@ import styled from 'styled-components';
 import Background from '../../assets/background.svg';
 import BannerHamburguer from '../../assets/banner-hamburguer.svg';
 
+export const Container = styled.section`
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('${Background}');
+`;
+
 export const Banner = styled.div`
   display: flex;
   justify-content: center;
@@ -29,9 +38,17 @@ export const Banner = styled.div`
       display: block;
       color: #fff;
       font-size: 18px;
+  
     }
   }
-`;
+  `;
+  export const CategoryMenu = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+  `;
+
 export const CategoryButton = styled(Link)`
   text-decoration: none;
   cursor: pointer;
@@ -42,28 +59,12 @@ export const CategoryButton = styled(Link)`
   line-height: 20px;
   border: none;
 
-  color: ${(props) => (props.isActiveCategory ? '#9758a6' : '#696969')};
-  border-bottom: ${(props) => props.isActiveCategory && '4px solid #9758a6'};
+  color: ${(props) => (props.$isActiveCategory ? '#9758a6' : '#696969')};
+  border-bottom: ${(props) => props.$isActiveCategory && '4px solid #9758a6'};
   
   &:hover {
     color: #9758a6;
   }
-`;
-
-export const CategoryMenu = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  margin-top: 30px;
-`;
-
-export const Container = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  background-color: #f0f0f0;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    url('${Background}');
 `;
 
 export const ProductsContainer = styled.div`
