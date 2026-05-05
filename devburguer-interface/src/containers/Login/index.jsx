@@ -19,7 +19,7 @@ import {
   Title,
 } from './styles.js';
 
-export default function Login() {
+export function Login() {
   const navigate = useNavigate();
   const { putUserData } = useUser();
 

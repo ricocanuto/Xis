@@ -1,8 +1,7 @@
-import { CategoriesCarousel } from '../../components/CategoriesCarousel';
-import { OffersCarousel } from '../../components/OffersCarousel';
+import { CategoriesCarousel, OffersCarousel } from '../../components';
 import { Banner, Container } from './styles.js';
 
-export default function Home() {
+export function Home() {
   return (
     <main>
       <Banner>

@@ -1,6 +1,11 @@
 import { ShoppingCartIcon, UserCircle } from '@phosphor-icons/react';
+import { useNavigate, useResolvedPath } from 'react-router-dom';
+import { useCart } from '../../hooks/CartContext';
+import { useUser } from '../../hooks/UserContext';
 
 import {
+  CartBadge,
+  CartIconWrapper,
   Container,
   Content,
   HeaderLink,
@@ -12,13 +17,29 @@ import {
 } from './styles';
 
 export function Header() {
+  const navigate = useNavigate();
+  const { logout, userInfo } = useUser();
+  const { cartCount } = useCart();
+
+  const { pathname } = useResolvedPath();
+
+  function logoutUser() {
+    logout();
+    navigate('/login');
+  }
+
   return (
     <Container>
       <Content>
         <Navigation>
           <div>
-            <HeaderLink>Home</HeaderLink>
-            <HeaderLink>Cardápio</HeaderLink>
+            <HeaderLink to="/" $isActive={pathname === '/'}>
+              Home
+            </HeaderLink>
+            <hr></hr>
+            <HeaderLink to="/cardapio" $isActive={pathname === '/cardapio'}>
+              Cardápio
+            </HeaderLink>
           </div>
         </Navigation>
         <Options>
@@ -26,14 +47,18 @@ export function Header() {
             <UserCircle color="#fff" size={24} />
             <div>
               <p>
-                Olá, <span>Ricardo</span>
+                Olá, <span>{userInfo.name}</span>
               </p>
-              <Logout>Sair</Logout>
+              <Logout onClick={logoutUser}>Sair</Logout>
             </div>
           </Profile>
           <LinkContainer>
-            <ShoppingCartIcon color="#fff" size={24} />
-            <HeaderLink>Carrinho</HeaderLink>
+            {/* ✅ Badge do contador */}
+            <CartIconWrapper>
+              <ShoppingCartIcon color="#fff" size={24} />
+              {cartCount > 0 && <CartBadge>{cartCount}</CartBadge>}
+            </CartIconWrapper>
+            <HeaderLink to="/carrinho">Carrinho</HeaderLink>
           </LinkContainer>
         </Options>
       </Content>

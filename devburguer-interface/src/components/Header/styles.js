@@ -29,9 +29,16 @@ export const Navigation = styled.nav`
     align-items: center;
     gap: 20px;
   }
+  hr {
+    height: 24px;
+    border: 1px solid #625e5e;
+
+  }
 `;
 export const HeaderLink = styled(Link)`
-  color: #ffff;
+  color: ${(props) => (props.$isActive ? '#9758e6' :  '#ffff')};
+  border-bottom: ${(props) => (props.$isActive ? '1px solid #9758e6' : 'none')};
+  padding-bottom: 5px;
   text-decoration: none;
   font-size: 14px;
   transition: color 200ms;
@@ -73,4 +80,25 @@ export const LinkContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+`;
+export const CartIconWrapper = styled.div`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+`;
+
+export const CartBadge = styled.span`
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff3205;
+  color: #fff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
