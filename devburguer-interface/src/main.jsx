@@ -1,3 +1,4 @@
+import { Elements } from '@stripe/react-stripe-js';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
@@ -7,12 +8,15 @@ import { AppProvider } from './hooks';
 import { CartProvider } from './hooks/CartContext';
 import { router } from './routes';
 import GlobalStyles from './styles/globalStyles';
+import stripePromise from './config/stripeConfig';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AppProvider>
-    <CartProvider>
+      <CartProvider>
+      <Elements stripe={stripePromise}>
     <RouterProvider router={router} />
+      </Elements> 
     <GlobalStyles />
     <ToastContainer autoClose={2080} theme="colored" />
     </CartProvider>
