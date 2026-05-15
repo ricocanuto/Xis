@@ -59,7 +59,7 @@ export const CardProduct = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 40px;
-  color: #ffff;
+  color: #${props} => props.theme.whitef;
   display: flex;
   padding: 20px 10px;
   width: 273px;

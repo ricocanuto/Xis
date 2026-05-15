@@ -8,7 +8,7 @@ align-items: center;
 gap: 50px;
 padding: 20px;
 border-radius: 28px;
-background-color: #fff;
+background-color: #${props} => props.theme.white;
 cursor: grab;
 box-shadow: rgba(0, 0, 0,  0.35) opx 5px 15px;
 position: relative;
@@ -24,7 +24,7 @@ position: relative;
 
     p {
     font-size: 18px;
-    color: #ff8c05;
+    color: #${props} => props.theme.orange;
     line-height: 20px;
     min-height: 68px;
     font-weight: 700;
@@ -42,7 +42,7 @@ position: relative;
     strong {
         margin-top: 30px;
         font-size: 22px;
-        color: #363636;
+        color: #${props} => props.theme.black;
         font-weight: 800;
         line-height: 10px;        
     }

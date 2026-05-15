@@ -21,7 +21,7 @@ export const Banner = styled.div`
   background: url('${BannerHamburguer}') no-repeat;
   background-size: cover;
   background-position: center;
-  background-color: #1f1f1f;
+  background-color: #${props} => props.theme.mainblack;
   height: 480px;
   position: relative;
 
@@ -36,7 +36,7 @@ export const Banner = styled.div`
 
     span {
       display: block;
-      color: #fff;
+      color: #${props} => props.theme.white;
       font-size: 18px;
   
     }
@@ -59,11 +59,11 @@ export const CategoryButton = styled(Link)`
   line-height: 20px;
   border: none;
 
-  color: ${(props) => (props.$isActiveCategory ? '#9758a6' : '#696969')};
-  border-bottom: ${(props) => props.$isActiveCategory && '4px solid #9758a6'};
+  color: ${(props) => (props.$isActiveCategory ? '#${props} => props.theme.purple' : '#696969')};
+  border-bottom: ${(props) => props.$isActiveCategory && '4px solid #${props} => props.theme.purple'};
   
   &:hover {
-    color: #9758a6;
+    color: #${props} => props.theme.purple;
   }
 `;
 

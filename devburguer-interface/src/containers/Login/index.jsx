@@ -92,7 +92,7 @@ export function Login() {
             {errors?.password && <span>{errors.password.message}</span>}
           </InputContainer>
 
-          {/* <Link style = {{ color: '#fff' }} to="/forgot-password">Esqueci minha senha</Link> */}
+          {/* <Link style = {{ color: '#${props} => props.theme.white' }} to="/forgot-password">Esqueci minha senha</Link> */}
 
           <Button type="submit">Entrar</Button>
         </Form>

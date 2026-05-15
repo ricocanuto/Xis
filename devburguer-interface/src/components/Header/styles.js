@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: #1f1f1f;
+  background-color: #${props} => props.theme.mainblack;
   width: 100%;
   height: 72px;
   padding: 0 56px;
@@ -31,12 +31,12 @@ export const Navigation = styled.nav`
   }
   hr {
     height: 24px;
-    border: 1px solid #625e5e;
+    border: 1px solid #${props} => props.theme.darkGray;
 
   }
 `;
 export const HeaderLink = styled(Link)`
-  color: ${(props) => (props.$isActive ? '#9758e6' :  '#ffff')};
+  color: ${(props) => (props.$isActive ? '#9758e6' :  '#${props} => props.theme.whitef')};
   border-bottom: ${(props) => (props.$isActive ? '1px solid #9758e6' : 'none')};
   padding-bottom: 5px;
   text-decoration: none;
@@ -60,7 +60,7 @@ export const Profile = styled.div`
   font-size: 14px;
 
   p {
-    color: #fff;
+    color: #${props} => props.theme.white;
     line-height: 90%;
     font-weight: 300;
   }
@@ -70,7 +70,7 @@ export const Profile = styled.div`
   }
 `;
 export const Logout = styled.button`
-  color: #ff3205;
+  color: #${props} => props.theme.red;
   text-decoration: none;
   font-weight: 700;
   background-color: transparent;
@@ -91,8 +91,8 @@ export const CartBadge = styled.span`
   position: absolute;
   top: -8px;
   right: -8px;
-  background: #ff3205;
-  color: #fff;
+  background: #${props} => props.theme.red;
+  color: #${props} => props.theme.white;
   border-radius: 50%;
   width: 18px;
   height: 18px;
