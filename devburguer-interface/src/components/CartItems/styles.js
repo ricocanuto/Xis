@@ -14,14 +14,14 @@ button {
     justify-content: center;
     height: 30px;
     width: 30px;
-    color: #${props} => props.theme.white;
+    color: ${props => props.theme.white};
     border-radius: 4px;
-    background-color: #${props} => props.theme.purple;
+    background-color: ${props => props.theme.purple};
     transition: all 0.4s;
     border: none;
 
     &:hover {
-        background: #${props} => props.theme.seconddarkpurple;
+        background: ${props => props.theme.seconddarkpurple};
     }
 }`;
 export const EmptyCart = styled.p`

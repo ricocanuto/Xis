@@ -10,18 +10,23 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.2",
+    "@mui/material": "^9.0.1",
     "@phosphor-icons/react": "^2.1.10",
     "@stripe/react-stripe-js": "^6.3.0",
     "@stripe/stripe-js": "^9.4.0",
     "axios": "^1.13.6",
     "cors": "^2.8.6",
+    "lucide-react": "^1.16.0",
     "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.71.2",
     "react-multi-carousel": "^2.8.6",
     "react-router-dom": "^7.13.1",
+    "react-select": "^5.10.2",
     "react-toastify": "^11.0.5",
     "styled-components": "^6.3.11",
     "yup": "^1.7.1"

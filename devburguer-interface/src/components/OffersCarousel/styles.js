@@ -35,7 +35,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
   font-size: 32px;
   font-weight: 800;
-  color: #61a120;
+  color: ${props => props.theme.green};
   padding-bottom: 12px;
   position: relative;
   text-align: center;
@@ -59,7 +59,7 @@ export const CardProduct = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 40px;
-  color: #${props} => props.theme.whitef;
+  color: ${props => props.theme.white};
   display: flex;
   padding: 20px 10px;
   width: 273px;

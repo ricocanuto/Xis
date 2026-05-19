@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Background from '../../assets/background.svg';
-import BannerHome from '../../assets/banner-home.svg';
+import Background from '../../assets/background.png';
+import BannerHome from '../../assets/banner-home.png';
 
 export const Banner = styled.div`
   background: url('${BannerHome}');
@@ -12,7 +12,7 @@ export const Banner = styled.div`
   h1 {
     font-family: 'Road Rage', sans-serif;
     font-size: 80px;
-    color: #f4f4f4;
+    color: ${props => props.theme.white};
     position: absolute;
     right: 20%;
     top: 10%;

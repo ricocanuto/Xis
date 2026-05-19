@@ -40,31 +40,34 @@ export function Login() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data) => {
-    try {
-      const { data: userData } = await toast.promise(
-        api.post('/sessions', {
-          email: data.email,
-          password: data.password,
-        }),
-        {
-          pending: 'Verificando seus dados...',
-          success: {
-            render() {
-              setTimeout(() => {
-                navigate('/');
-              }, 2000);
-              return 'Seja bem vindo(a)!';
-            },
-          },
-          error: 'Email ou senha incorretos 🤯',
-        },
-      );
-      putUserData(userData);
-       } catch (error) {
-      console.error(error);
-    }
-  };
+ const onSubmit = async (data) => {
+  try {
+    const { data: userData } = await toast.promise(
+      api.post('/sessions', {
+        email: data.email,
+        password: data.password,
+      }),
+      {
+        pending: 'Verificando seus dados...',
+        success: 'Seja bem vindo(a)!',
+        error: 'Email ou senha incorretos 🤯',
+      },
+    );
+
+    putUserData(userData);
+    
+    setTimeout(() => {
+      if (userData?.admin) {
+        navigate('/admin/pedidos');
+      } else {
+        navigate('/');
+      }
+    }, 2000);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <Container>
@@ -91,8 +94,6 @@ export function Login() {
             <input id="password" type="password" {...register('password')} />
             {errors?.password && <span>{errors.password.message}</span>}
           </InputContainer>
-
-          {/* <Link style = {{ color: '#${props} => props.theme.white' }} to="/forgot-password">Esqueci minha senha</Link> */}
 
           <Button type="submit">Entrar</Button>
         </Form>

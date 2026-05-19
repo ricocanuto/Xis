@@ -1,5 +1,3 @@
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -9,6 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { api } from '../../../services/api';
@@ -46,7 +45,7 @@ export function Row({ row, setOrders, orders }) {
             size="small"
             onClick={() => setOpen(!open)}
           >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            {open ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">

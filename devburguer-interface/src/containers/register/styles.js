@@ -1,6 +1,6 @@
 import { Link as ReactLink } from 'react-router-dom';
 import styled from 'styled-components';
-import Background from '../../assets/background.svg';
+import Background from '../../assets/background.png';
 import BackgroundLogin from '../../assets/bgLogin.png';
 
 export const Container = styled.div`
@@ -39,10 +39,10 @@ export const RightContainer = styled.div`
 
   background: url(${Background});
   background-color: #1e1e1e;
-  color: #${props} => props.theme.white;
+  color: ${props => props.theme.white};
 
   p {
-    color: #${props} => props.theme.white;
+    color: ${props => props.theme.white};
     font-size: 18px;
     font-weight: 800;
 
@@ -55,7 +55,7 @@ export const RightContainer = styled.div`
 export const Title = styled.h2`
   font-family: 'Road Rage', sans-serif;
   font-size: 40px;
-  color: #${props} => props.theme.purple;
+  color: ${props => props.theme.purple};
 `;
 
 export const Form = styled.form`
@@ -84,11 +84,11 @@ export const InputContainer = styled.div`
   label {
     font-size: 18px;
     font-weight: 600;
-    color: #${props} => props.theme.white;
+    color: ${props => props.theme.white};
   }
 `;
 
 export const Link = styled(ReactLink)`
   text-decoration: none;
-  color: #${props} => props.theme.white;
+  color: ${props => props.theme.white};
 `;
